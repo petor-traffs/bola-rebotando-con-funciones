@@ -1,0 +1,44 @@
+//declaramos todas las variables globales
+int x=0;
+int y=0;
+int speedx=1;
+int speedy=10;
+void setup(){
+size(200,200);
+smooth();
+}
+
+void draw(){
+background(255);
+move();
+bounce();
+display();
+}
+//funcion para mover la bola
+void move(){
+//cambia la localizacion de x por medio de speed
+x=x+speedx;
+y=y+speedy;
+}
+void bounce(){
+//al llegar a un borde, hacemos speed negativo
+if ((x>width)||(x<0)){
+speedx=speedx*-1;
+}
+if ((y>height)||(y<0)){
+speedy=speedy*-1;
+}
+}
+//funcion para mostrar la bola
+void display(){
+  background(255);
+  rectMode(CENTER);
+  noFill();
+stroke(0);
+rect(x,y,32,32);
+fill(255);
+rect(x-4,y-4,4,4);
+rect(x+4,y-4,4,4);
+line(x-4,y+4,x+4,y+4);
+//ellipse(x,100,32,32);
+}
